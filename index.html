@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+
+</head>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+emailjs.init({
+publicKey: "URlsj2ez8kxbqvpf9",
+});
+})();
+</script>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container ms-auto">
+            <a class="navbar-brand text-gradient-animate" href="#">PORTFOLIO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <button id="darkModeToggle" class="btn btn-sm btn-outline-light">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <button id="musicToggle" class="btn btn-sm btn-outline-light music-btn" title="Toggle Background Music">
+                            <i class="fas fa-music"></i>
+                            <span class="music-wave">
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                            </span>
+                            <div class="volume-control">
+                                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+                                <button class="track-select-btn" data-bs-toggle="modal" data-bs-target="#musicModal" title="Change Music Track">
+                                    <i class="fas fa-sliders-h"></i>
+                                </button>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Background Audio -->
+<audio id="backgroundAudio" autoplay loop muted>
+    <source src="/songs/winningspeech.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+<button id="playAudio" class="btn btn-primary">Play Background Music</button>
+<audio id="backgroundAudio" loop>
+    <source src="/songs/winningspeech.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
+    <!-- Audio Player (hidden) -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a73467.mp3?filename=ambient-piano-ampamp-strings-10711.mp3" type="audio/mp3" data-name="Ambient Piano">
+        <source src="https://cdn.pixabay.com/download/audio/2022/01/26/audio_d16737dc41.mp3?filename=relaxing-145038.mp3" type="audio/mp3" data-name="Relaxing">
+        <source src="https://cdn.pixabay.com/download/audio/2021/04/07/audio_cb5a329a2a.mp3?filename=relaxed-vlog-131746.mp3" type="audio/mp3" data-name="Relaxed Vlog">
+        <source src="https://cdn.pixabay.com/download/audio/2021/11/25/audio_cb97a9dccc.mp3?filename=lofi-study-112191.mp3" type="audio/mp3" data-name="Lo-Fi Study">
+        <source src="https://cdn.pixabay.com/download/audio/2023/01/25/audio_dcd369535a.mp3?filename=chill-lofi-song-8444.mp3" type="audio/mp3" data-name="Chill Beats">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Selection Modal -->
+    <div class="modal fade" id="musicModal" tabindex="-1" aria-labelledby="musicModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="musicModalLabel">Select Background Music</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="music-tracks">
+                        <div class="track-item active" data-index="0">
+                            <i class="fas fa-music"></i> Ambient Piano
+                        </div>
+                        <div class="track-item" data-index="1">
+                            <i class="fas fa-music"></i> Relaxing
+                        </div>
+                        <div class="track-item" data-index="2">
+                            <i class="fas fa-music"></i> Relaxed Vlog
+                        </div>
+                        <div class="track-item" data-index="3">
+                            <i class="fas fa-music"></i> Lo-Fi Study
+                        </div>
+                        <div class="track-item" data-index="4">
+                            <i class="fas fa-music"></i> Chill Beats
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div id="particles-js" class="particles-js"></div>
+        <div class="hero-overlay"></div>
+        
+        <!-- Animated shapes -->
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Hi, I'm <span class="highlight">Anand Kumar</span></h1>
+            <h2 class="typing mb-4 animate__animated animate__fadeIn animate__delay-1s">Full-Stack Developer & Designer</h2>
+            <p class="lead mb-5 animate__animated animate__fadeIn animate__delay-1s">Creating professional, responsive, and innovative digital solutions.</p>
+            <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="#portfolio" class="btn btn-primary btn-lg">View My Work</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg ms-3">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator animate__animated animate__fadeIn animate__delay-3s">
+            <a href="#about" class="scroll-down">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+                <span class="arrow">
+                    <span></span>
+                    <span></span>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="lead about-text">I'm a passionate web developer with expertise in creating responsive and user-friendly websites. With over 5 years of experience, I've helped numerous clients achieve their online goals.</p>
+                    <p class="about-text">My approach combines creative design with clean, efficient code to deliver exceptional user experiences across all devices.</p>
+                    <div class="skill-bars mt-5">
+                        <div class="skill">
+                            <div class="skill-name">HTML/CSS <span>95%</span></div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-name">JavaScript <span>85%</span></div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-name">React <span>80%</span></div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-name">UI/UX <span>70%</span></div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 about-img-col">
+                    <div class="about-img-container parallax" data-speed="0.05">
+                        <img src="images/Myphoto.jpg" alt="Anand Kumar" class="about-img img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">My Services</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Custom website development with clean code and modern frameworks like React, Angular, or Vue.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Responsive Design</h3>
+                        <p>Creating websites that work perfectly on desktops, tablets, and mobile devices.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>SEO Optimization</h3>
+                        <p>Improving website visibility in search engines to attract more visitors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">My Projects</h2>
+            
+            <div class="portfolio-filter text-center mb-4">
+                <button class="btn btn-filter active" data-filter="all">All Projects</button>
+                <button class="btn btn-filter" data-filter="web">Web Design</button>
+                <button class="btn btn-filter" data-filter="app">App Development</button>
+                <button class="btn btn-filter" data-filter="ui">UI/UX Design</button>
+            </div>
+            
+            <div class="row g-4 portfolio-items">
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item web">
+                    <div class="portfolio-card" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <div class="portfolio-img">
+                            <img src="images/nexcent-logo.svg" alt="Nexcent Website" class="img-fluid">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Nexcent Website</h4>
+                                <p>Web Design</p>
+                                <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item app">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="Mobile Application" class="img-fluid project-logo">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Mobile Application</h4>
+                                <p>App Development</p>
+                                <a href="#" class="btn-view-project" data-bs-toggle="modal" data-bs-target="#portfolioModal2">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item ui">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Dashboard UI" class="img-fluid project-logo">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Dashboard UI</h4>
+                                <p>UI/UX</p>
+                                <a href="#" class="btn-view-project" data-bs-toggle="modal" data-bs-target="#portfolioModal3">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item web">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain-wordmark.svg" alt="Corporate Website" class="img-fluid project-logo">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Corporate Website</h4>
+                                <p>Web Design</p>
+                                <a href="#" class="btn-view-project" data-bs-toggle="modal" data-bs-target="#portfolioModal4">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item app">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Fitness App" class="img-fluid project-logo">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Fitness App</h4>
+                                <p>App Development</p>
+                                <a href="#" class="btn-view-project" data-bs-toggle="modal" data-bs-target="#portfolioModal5">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item ui">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="E-learning Platform" class="img-fluid project-logo">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>E-learning Platform</h4>
+                                <p>UI/UX</p>
+                                <a href="#" class="btn-view-project" data-bs-toggle="modal" data-bs-target="#portfolioModal6">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Address</h3>
+                                <p class="contact-detail">Nehru Park, Gali No. 5, Bahadurgarh, Jhajjar, Haryana - 124507</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p class="contact-detail">kumaranand70441@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h3>Phone</h3>
+                                <p class="contact-detail">+91 8173816124</p>
+                            </div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/?__pwa=1"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/anand-kumar-433337321?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bu2YCRc6pSfaeMI8jfV84QA%3D%3D"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/AnandXDev"><i class="fab fa-github"></i></a>
+                            <a href="mailto:kumaranand70441@gmail.com"><i class="far fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <form id="contactForm" class="contact-form" action="mailto:kumaranand70441@gmail.com" method="post" enctype="text/plain">
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                            <label for="email">Your Email</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                            <label for="subject">Subject</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message" required style="height: 150px"></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100" onclick="sendEmail()">Send Message</button>
+                        <div id="formMessage" class="mt-3"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Anand Kumar. All Rights Reserved.</p>
+            <div class="back-to-top">
+                <a href="#home" class="btn-scroll-top">
+                    <i class="fas fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modals -->
+    <!-- Modal 1 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModal1Label">Nexcent Website</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="images/nexcent-logo.svg" alt="Nexcent Website" class="img-fluid">
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Project Details</h3>
+                                <p>A modern and responsive website built using Bootstrap 5. The Nexcent website features a clean design with intuitive navigation and optimized performance.</p>
+                                <p>Technologies used: HTML, CSS, Bootstrap 5, JavaScript</p>
+                                <div class="modal-buttons mt-4">
+                                    <a href="https://github.com/AnandXDev/Bootstrap-5/tree/ui" class="btn btn-primary" target="_blank">View Code on GitHub</a>
+                                    <a href="https://github.com/AnandXDev/Bootstrap-5/tree/ui" class="btn btn-outline-dark ms-2" target="_blank">View Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mobile Application</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center mb-4">
+                        <div class="col-md-6">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="Mobile Application" class="img-fluid mb-4 modal-logo">
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Project Details</h3>
+                            <p>A cross-platform mobile application that allows users to track their fitness goals and connect with trainers.</p>
+                            <p class="tech-stack"><strong>Technologies used:</strong> React Native, Firebase, Redux, Expo</p>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h4>Features</h4>
+                        <ul>
+                            <li>User authentication and profile management</li>
+                            <li>Workout tracking and progress visualization</li>
+                            <li>Real-time messaging with fitness trainers</li>
+                            <li>Custom workout plan creation</li>
+                        </ul>
+                    </div>
+                    <div class="modal-buttons mt-4">
+                        <a href="#" class="btn btn-primary">View Live</a>
+                        <a href="#" class="btn btn-outline-dark ms-2">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Dashboard UI</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center mb-4">
+                        <div class="col-md-6">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Dashboard UI" class="img-fluid mb-4 modal-logo">
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Project Details</h3>
+                            <p>A modern, responsive admin dashboard design with dark/light theme and various data visualization components.</p>
+                            <p class="tech-stack"><strong>Technologies used:</strong> HTML, CSS, JavaScript, Chart.js, Bootstrap</p>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h4>Features</h4>
+                        <ul>
+                            <li>Responsive design for all device sizes</li>
+                            <li>Interactive data visualization charts</li>
+                            <li>Dark/light theme toggle</li>
+                            <li>Modern UI components and animations</li>
+                        </ul>
+                    </div>
+                    <div class="modal-buttons mt-4">
+                        <a href="#" class="btn btn-primary">View Live</a>
+                        <a href="#" class="btn btn-outline-dark ms-2">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal4" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Corporate Website</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center mb-4">
+                        <div class="col-md-6">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain-wordmark.svg" alt="Corporate Website" class="img-fluid mb-4 modal-logo">
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Project Details</h3>
+                            <p>A professional corporate website for a finance company with service listings, team profiles, and client testimonials.</p>
+                            <p class="tech-stack"><strong>Technologies used:</strong> WordPress, Custom Theme, PHP, jQuery, SCSS</p>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h4>Features</h4>
+                        <ul>
+                            <li>Custom WordPress theme development</li>
+                            <li>Responsive design optimized for mobile</li>
+                            <li>SEO optimization for better search rankings</li>
+                            <li>Contact form with custom validation</li>
+                        </ul>
+                    </div>
+                    <div class="modal-buttons mt-4">
+                        <a href="#" class="btn btn-primary">View Live</a>
+                        <a href="#" class="btn btn-outline-dark ms-2">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal5" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Fitness App</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center mb-4">
+                        <div class="col-md-6">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Fitness App" class="img-fluid mb-4 modal-logo">
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Project Details</h3>
+                            <p>A comprehensive fitness application with workout tracking, nutrition plans, and progress analytics.</p>
+                            <p class="tech-stack"><strong>Technologies used:</strong> Flutter, Dart, Firebase, REST API</p>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h4>Features</h4>
+                        <ul>
+                            <li>Cross-platform (iOS/Android) compatibility</li>
+                            <li>Real-time data synchronization</li>
+                            <li>Personalized workout recommendations</li>
+                            <li>Progress tracking with charts and statistics</li>
+                        </ul>
+                    </div>
+                    <div class="modal-buttons mt-4">
+                        <a href="#" class="btn btn-primary">View Live</a>
+                        <a href="#" class="btn btn-outline-dark ms-2">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal6" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">E-learning Platform</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center mb-4">
+                        <div class="col-md-6">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="E-learning Platform" class="img-fluid mb-4 modal-logo">
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Project Details</h3>
+                            <p>An interactive e-learning platform with course management, video lessons, quizzes, and student progress tracking.</p>
+                            <p class="tech-stack"><strong>Technologies used:</strong> React, Node.js, Express, MongoDB, WebRTC</p>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h4>Features</h4>
+                        <ul>
+                            <li>User authentication and role-based access</li>
+                            <li>Interactive video lessons with bookmarking</li>
+                            <li>Real-time quiz system with instant feedback</li>
+                            <li>Student progress dashboard and analytics</li>
+                        </ul>
+                    </div>
+                    <div class="modal-buttons mt-4">
+                        <a href="#" class="btn btn-primary">View Live</a>
+                        <a href="#" class="btn btn-outline-dark ms-2">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html> 

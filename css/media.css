@@ -1,0 +1,173 @@
+/* Media Queries Stylesheet */
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .service-card, .contact-form, .contact-info {
+        padding: 1.5rem;
+    }
+
+    .portfolio-filter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn-filter {
+        margin-bottom: 10px;
+    }
+
+    .contact-item {
+        flex-direction: column;
+    }
+
+    .contact-item i {
+        margin-bottom: 1rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .portfolio-filter .btn-filter {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .about-img-col {
+        margin-top: 3rem;
+    }
+
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .hero-content h1 {
+        font-size: 3.8rem;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .hero-content h1 {
+        font-size: 4.5rem;
+    }
+}
+
+/* Landscape orientation for mobile devices */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        height: auto;
+        padding: 100px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar, .hero, .portfolio-filter, .contact-form, footer {
+        display: none;
+    }
+
+    body {
+        color: #000;
+        background-color: #fff;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .section-title:after {
+        display: none;
+    }
+}
+
+/* Dark mode preference */
+@media (prefers-color-scheme: dark) {
+    body.auto-dark-mode {
+        background-color: #121212;
+        color: #f0f0f0;
+    }
+
+    body.auto-dark-mode .service-card,
+    body.auto-dark-mode .contact-form,
+    body.auto-dark-mode .contact-info,
+    body.auto-dark-mode .portfolio-modal .modal-content {
+        background-color: #1e1e1e;
+        color: #f0f0f0;
+    }
+
+    body.auto-dark-mode .section-title,
+    body.auto-dark-mode h1, 
+    body.auto-dark-mode h2, 
+    body.auto-dark-mode h3, 
+    body.auto-dark-mode h4, 
+    body.auto-dark-mode h5, 
+    body.auto-dark-mode h6 {
+        color: #f0f0f0;
+    }
+
+    body.auto-dark-mode .form-control {
+        background-color: #333;
+        border-color: #444;
+        color: #f0f0f0;
+    }
+} 
